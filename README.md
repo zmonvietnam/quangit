@@ -1,5 +1,5 @@
 <p align="center">
-  <img src="./landingpage.png" alt="Z-MON Việt Nam — Nền tảng quản lý hiệu suất doanh nghiệp" width="100%" />
+  <img src="https://i.ibb.co/RGkB1FCW/landingpage.png" alt="Z-MON Việt Nam — Nền tảng quản lý hiệu suất doanh nghiệp" width="100%" />
 </p>
 
 <h1 align="center">Z-MON Việt Nam</h1>
@@ -54,6 +54,375 @@
 
 ---
 
+## Dashboard Admin — Toàn bộ chức năng A→Z
+
+Dashboard Admin (`my.zmon.vn`) là trung tâm điều hành dành cho **Admin** và **Operator**. Giao diện gồm **3 vùng điều hướng** luôn hiển thị:
+
+```
+┌──────────────┬─────────────────────────────────────────────────────────┐
+│  Left Rail   │  Top Header (Ctrl+K · Gói · Hướng dẫn · Hồ sơ…)        │
+│  (thanh trái)├──────────┬──────────────────────────────────────────────┤
+│              │ Sidebar  │  Nội dung trang (module đang chọn)          │
+│  Hỗ trợ ZMON │ (menu    │                                              │
+│  Giỏ hàng    │  chính)  │                                              │
+│  TB hệ thống │          │                                              │
+│  VI/EN       │          │                                              │
+│  Pháp lý     │          │                                              │
+└──────────────┴──────────┴──────────────────────────────────────────────┘
+```
+
+> **Phân quyền:** Operator chỉ thấy menu được cấp **View** hoặc **Edit** — menu **Deny** bị ẩn hoàn toàn. Ma trận cấu hình tại **Quản lý người điều hành → Phân quyền**.
+
+---
+
+### Sidebar chính — 18 mục (theo thứ tự từ trên xuống)
+
+#### 1. Tổng quan `/tong-quan`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Cung cấp snapshot toàn doanh nghiệp theo kỳ lọc thời gian — trang mặc định sau đăng nhập |
+| **Tác dụng** | Quản lý mở mỗi sáng nắm: NV đang làm thực tế, máy có dữ liệu, task quá hạn, cảnh báo, % license |
+| **Ai dùng** | Ban lãnh đạo, quản lý vận hành, Admin |
+| **Điểm nổi bật** | 14+ KPI cards · Biểu đồ xu hướng · Bảng top máy · Quick link AI/Công việc/Máy trạm/Báo cáo · Deep link khi KPI đỏ |
+
+---
+
+#### 2. AI Trợ lý `/ai-tro-ly`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Chatbot phân tích dữ liệu Z-MON bằng ngôn ngữ tự nhiên — truy vấn số liệu thật, không bịa |
+| **Tác dụng** | Hỏi *"Ai idle nhiều nhất tuần này?"*, *"Báo cáo hiệu suất phòng Kế toán"* — thay 15–30 phút lọc thủ công |
+| **Ai dùng** | Admin, Operator có quyền View/Edit module AI |
+| **Điểm nổi bật** | Streaming realtime · 30 phiên hội thoại · 8+ chip gợi ý · Bảng/biểu đồ kèm câu trả lời · VI/EN |
+
+---
+
+#### 3. Nhắn tin `/nhan-tin`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Trao đổi realtime Admin/Operator ↔ Nhân viên qua WebSocket |
+| **Tác dụng** | Nhắc việc, thông báo nội bộ, hỗ trợ kỹ thuật Agent — không cần email hay app chat riêng |
+| **Ai dùng** | Quản lý, HR, IT — NV nhận tin qua Agent tab Thông báo |
+| **Điểm nổi bật** | Danh sách hội thoại · Chat bubble · Đính kèm ảnh/file 5MB · Badge unread · Online/offline NV |
+
+---
+
+#### 4. Công việc — Nhóm 9 module con
+
+| | |
+|---|---|
+| **Nhiệm vụ nhóm** | Quản lý toàn bộ vòng đời công việc — từ HR, task, dự án đến tích hợp nền tảng bên ngoài |
+| **Tác dụng nhóm** | Một hệ thống thay Trello + spreadsheet + email — kết nối "việc được giao" với "thời gian thực trên máy" |
+
+##### 4.1 Tổng quan công việc `/tong-quan-cong-viec`
+
+| **Nhiệm vụ** | Dashboard sức khỏe module Công việc: health score, velocity, completion rate |
+| **Tác dụng** | PM đánh giá dự án trong 30 giây — biết sprint healthy hay at-risk |
+| **Điểm nổi bật** | AI tóm tắt tự động · Biểu đồ velocity · Task quá hạn nổi bật · Link nhanh sang Danh sách/Dự án |
+
+##### 4.2 Nhân viên `/nhan-vien`
+
+| **Nhiệm vụ** | Quản lý hồ sơ HR, gán máy Agent, cấu hình **ca làm việc** (nền tảng mọi số liệu) |
+| **Tác dụng** | Ca sai = analytics/chấm công/thất thoát sai — cấu hình đúng trước khi đánh giá hiệu suất |
+| **Điểm nổi bật** | Gán máy từ fleet online · Ca ngày/đêm/fulltime · Lương/giờ · Filter trạng thái theo ngày · Phòng ban |
+
+##### 4.3 Danh sách công việc `/danh-sach-cong-viec`
+
+| **Nhiệm vụ** | Trung tâm CRUD task — tạo, gán, deadline, priority, theo dõi tiến độ |
+| **Tác dụng** | PM/team lead vận hành hàng ngày — standup, sprint, delivery |
+| **Điểm nổi bật** | 5 view: List · Kanban · Lịch · Timeline · Gantt · Bulk actions · Export CSV/PDF · Filter mạnh · Comment trên task |
+
+##### 4.4 Dự án công việc `/du-an-cong-viec`
+
+| **Nhiệm vụ** | Gom task liên quan, theo dõi % tiến độ và trạng thái active/completed/on-hold |
+| **Tác dụng** | Quản lý initiative lớn — sprint, khách hàng, phòng ban — không chỉ task lẻ |
+| **Điểm nổi bật** | % tiến độ tự tính từ task con · At-risk highlight · Link sang Tiến độ/Gantt |
+
+##### 4.5 AI Công việc `/ai-cong-viec`
+
+| **Nhiệm vụ** | Trợ lý AI chuyên module Work — tạo task từ mô tả tự nhiên, phân tích workload |
+| **Tác dụng** | Tạo 10 task onboarding trong 1 phút; phát hiện bottleneck trước deadline |
+| **Điểm nổi bật** | Preview trước khi lưu · Phân tích rủi ro · Đề xuất ưu tiên · Context task/dự án thật |
+
+##### 4.6 Tiến độ `/tien-do`
+
+| **Nhiệm vụ** | Theo dõi tiến độ theo thời gian — burndown, velocity, timeline dự án |
+| **Tác dụng** | Sprint planning, retrospective, steering committee — có biểu đồ thực |
+| **Điểm nổi bật** | Burndown chart · Velocity chart · Filter theo dự án · Gantt timeline |
+
+##### 4.7 Kết nối nền tảng `/ket-noi-nen-tang`
+
+| **Nhiệm vụ** | Đăng nhập liên kết OAuth/API với 149+ nền tảng — đồng bộ dữ liệu hai chiều |
+| **Tác dụng** | Task tạo ở Jira hiện trên Agent; tiến độ báo từ Agent sync ngược — không nhập tay 2 lần |
+| **Điểm nổi bật** | Jira · Slack · Google · GitHub · Microsoft · Trello · Notion… · Sync incremental/full · Webhook · Sync log · Field mapping |
+
+##### 4.8 Nhật ký công việc `/nhat-ky-cong-viec`
+
+| **Nhiệm vụ** | Audit mọi thao tác module Công việc: user, system, AI, agent, integration |
+| **Tác dụng** | Truy vết ai đổi deadline, debug sync lỗi, giải quyết tranh chấp task |
+| **Điểm nổi bật** | Actor type filter · Timeline · Export · Khác với Nhật ký hoạt động (chỉ scope Work) |
+
+##### 4.9 Mẫu công việc `/mau-cong-viec`
+
+| **Nhiệm vụ** | Thư viện template task/dự án tái sử dụng — onboarding, sprint, checklist |
+| **Tác dụng** | Chuẩn hóa quy trình — triển khai nhanh cho phòng ban mới, không tạo task lẻ từ đầu |
+| **Điểm nổi bật** | Tạo/sửa template · Áp dụng hàng loạt · Subtask checklist sẵn |
+
+---
+
+#### 5. Máy trạm — Nhóm 3 module con
+
+| | |
+|---|---|
+| **Nhiệm vụ nhóm** | Quản lý fleet thiết bị nhân viên — từ topology, forensic chi tiết đến analytics tổng |
+| **Tác dụng nhóm** | IT và quản lý "nhìn vào" từng máy khi cần điều tra, hỗ trợ hoặc xác minh năng suất |
+
+##### 5.1 Sơ đồ Agent `/so-do-agent`
+
+| **Nhiệm vụ** | Trực quan hóa topology — máy nào online, ai đang gán, luồng dữ liệu Agent ↔ Cloud |
+| **Tác dụng** | IT nắm fleet trong một glance; phát hiện máy orphan chưa gán nhân viên |
+| **Điểm nổi bật** | Canvas topology · Trạng thái realtime · Status map theo module Agent |
+
+##### 5.2 Máy quản lý `/may-quan-ly`
+
+| **Nhiệm vụ** | Giám sát sâu từng thiết bị — 13 tab forensic, điều khiển từ xa, bật/tắt thu thập |
+| **Tác dụng** | Bằng chứng cụ thể khi tranh chấp hiệu suất; IT debug không cần TeamViewer |
+| **Điểm nổi bật** | 13 tab: Tổng quan · Tiến trình · Mạng · Screenshot · Keylog · Phím tắt · Clipboard · Browser · USB · Downloads · Files · Apps · Hiệu suất · Remote: khóa/restart/shutdown · OTP unlock 30 phút |
+
+##### 5.3 Hiệu suất tổng máy `/hieu-suat-tong-may`
+
+| **Nhiệm vụ** | So sánh fleet theo kỳ — hôm nay vs hôm qua, tuần vs tuần, tháng vs tháng |
+| **Tác dụng** | Phát hiện xu hướng giảm năng suất theo phòng ban; benchmark top performer |
+| **Điểm nổi bật** | Productivity · Focus time · WPM · App switching · Activity density · So sánh đa kỳ |
+
+---
+
+#### 6. Nhật ký hoạt động `/nhat-ky`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Audit toàn doanh nghiệp: đăng nhập, CRUD NV/máy/operator, export báo cáo, đổi cấu hình |
+| **Tác dụng** | Tuân thủ & bảo mật — truy vết *ai làm gì, lúc nào, từ IP nào* |
+| **Ai dùng** | Admin, auditor, security team |
+| **Điểm nổi bật** | Category filter (auth, employees, machines, settings…) · Search actor · Export CSV · Immutable log · Khác Nhật ký công việc |
+
+---
+
+#### 7. Hiệu suất `/hieu-suat`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Phân tích năng suất 2 chiều: máy tính (utilization, productivity) và công việc (completion, velocity) |
+| **Tác dụng** | Trả lời *"phòng nào hiệu quả nhất?"* và *"team có kịp deadline không?"* — chỉ tính phút trong ca làm |
+| **Ai dùng** | Manager, HR analytics |
+| **Điểm nổi bật** | Tab Máy + Tab Công việc · Compare panel (hôm nay vs hôm qua, tháng vs tháng trước) · Filter phòng ban · Drill-down sang NV/Máy |
+
+---
+
+#### 8. Phân tích thất thoát `/phan-tich-that-thoat`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Quy đổi phút idle/low-productivity thành **chi phí VND** theo lương/giờ |
+| **Tác dụng** | Ban lãnh đạo thấy ROI rõ — *"Tháng này thất thoát 47 triệu VND do idle trong ca"* |
+| **Ai dùng** | Ban lãnh đạo, CFO, HR |
+| **Điểm nổi bật** | Tab Thời gian + Tab Chi phí · Lương/giờ theo NV hoặc mặc định · Chỉ tính trong ca (UTC+7) · Top NV/phòng thất thoát |
+
+---
+
+#### 9. Kiểm soát gian lận `/kiem-soat-gian-lan`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Quét tự động nền khi Agent gửi dữ liệu — phát hiện autoclicker, macro, pattern bất thường |
+| **Tác dụng** | Phát hiện fake activity — có evidence review trước khi xử lý kỷ luật |
+| **Ai dùng** | HR, compliance, quản lý |
+| **Điểm nổi bật** | Preset rule theo chính sách · App/site blacklist · Evidence panel · Alert workflow · Quét nền — trang chỉ hiển thị kết quả |
+
+---
+
+#### 10. Báo cáo `/bao-cao`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Xuất dữ liệu định kỳ cho họp điều hành, audit, lưu trữ dài hạn |
+| **Tác dụng** | Một file Excel 5 sheet thay hàng giờ copy-paste từ nhiều module |
+| **Ai dùng** | Quản lý, HR, auditor |
+| **Điểm nổi bật** | 4 tab: Tổng quan · Máy tính · Công việc · Thất thoát · Xuất CSV/Excel 5 sheet · Filter thời gian, phòng ban, NV |
+
+---
+
+#### 11. Cảnh báo `/canh-bao`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Chuyển ngưỡng kỹ thuật thành ticket có workflow — không chỉ log im lặng |
+| **Tác dụng** | IT/quản lý ưu tiên xử lý theo severity — Critical trước, resolved có audit |
+| **Ai dùng** | IT, vận hành, quản lý |
+| **Điểm nổi bật** | Ngưỡng CPU/RAM/disk/idle/hiệu suất/gian lận/mất kết nối · Severity: Critical/High/Medium/Low · Workflow: Mở → Xử lý → Resolved · Tab: Chưa xử lý/Đã xử lý/Bỏ qua/Tất cả |
+
+---
+
+#### 12. Thông báo `/thong-bao`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Trung tâm thông báo **nội bộ doanh nghiệp** — task assign, alert mới, system message, support reply |
+| **Tác dụng** | Admin không bỏ lỡ sự kiện quan trọng trong app — deep link sang trang nguồn |
+| **Ai dùng** | Mọi Admin/Operator đăng nhập |
+| **Điểm nổi bật** | Notification hub · Chuông + toast + desktop notify · Web Push (đóng tab vẫn nhận) · Mark read/all · Deep link task/alert/máy · **Khác** Thông báo hệ thống (từ Z-MON platform) |
+
+---
+
+#### 13. Yêu cầu hỗ trợ `/yeu-cau-ho-tro`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Inbox ticket từ **nhân viên** qua Agent tab Hỗ trợ — IT/lỗi Agent/tài khoản |
+| **Tác dụng** | NV báo sự cố tập trung — admin xử lý có thread, không rải email/Zalo |
+| **Ai dùng** | IT, helpdesk, quản lý |
+| **Điểm nổi bật** | Workflow: Open → In Progress → Resolved · Chat hai chiều · Đính kèm ảnh/file · NV nhận phản hồi realtime trên Agent · **Khác** Hỗ trợ Z-MON online (chat với đội Z-MON) |
+
+---
+
+#### 14. Kiến thức cho nhân viên `/kien-thuc-nhan-vien`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Thư viện bài viết nội bộ — admin tạo/sửa, NV đọc trên Agent tab Kiến thức |
+| **Tác dụng** | Giảm ticket hỗ trợ lặp; onboarding NV mới nhanh — tự tra cứu quy trình |
+| **Ai dùng** | HR, training, quản lý (tạo nội dung) |
+| **Điểm nổi bật** | Danh mục: Quy trình · Tài liệu · FAQ · Hướng dẫn · Rich text editor · NV search trên Agent |
+
+---
+
+#### 15. Lịch sử chấm công `/lich-su-cham-cong`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Ghi nhận Chấm công / Ra về từ Agent tab Chấm công — đối soát với dữ liệu máy |
+| **Tác dụng** | HR phát hiện muộn/sớm/tăng ca; bổ sung snapshot máy — hai nguồn đối chiếu |
+| **Ai dùng** | HR, quản lý |
+| **Điểm nổi bật** | Một lần Chấm công/Ra về mỗi ngày · Filter theo NV/ngày · Trạng thái ca · Thời gian bật máy sau Ra về |
+
+---
+
+#### 16. Quản lý người điều hành `/quan-ly-dh`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Tạo/sửa/khóa tài khoản Operator và ma trận phân quyền **Edit / View / Deny** theo từng menu |
+| **Tác dụng** | Delegating quyền không chia sẻ password Admin — least privilege |
+| **Ai dùng** | Admin doanh nghiệp |
+| **Điểm nổi bật** | Tab Operators: CRUD tài khoản, role, lock/unlock · Tab Phân quyền: matrix feature × Edit/View/Deny · Role template · Audit mọi thay đổi |
+
+---
+
+#### 17. Kích hoạt máy quản lý `/kich-hoat`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Tạo license key, tải ZMON Agent, theo dõi slot đã dùng/còn lại |
+| **Tác dụng** | Bước đầu tiên mọi triển khai — không license = không thu thập dữ liệu |
+| **Ai dùng** | Admin, IT |
+| **Điểm nổi bật** | Tạo/revoke license · Download Agent · Theo dõi % slot · Máy online chờ gán · Link `download.zmon.vn` auto-update |
+
+---
+
+#### 18. Cài đặt chung `/cai-dat`
+
+| | |
+|---|---|
+| **Nhiệm vụ** | Cấu hình hạ tầng, thông báo Telegram, API/Webhook, thông tin phiên bản |
+| **Tác dụng** | Một nơi cấu hình kỹ thuật — xác nhận server sẵn sàng, nhận alert ngoài giờ, tích hợp bên thứ ba |
+| **Ai dùng** | Admin (Operator thường bị Deny) |
+
+| Tab | Nhiệm vụ | Tác dụng |
+|---|---|---|
+| **Hạ tầng** | CPU/RAM/ổ đĩa server, trạng thái DB và dịch vụ | Xác nhận hệ thống xanh trước rollout · Phát hiện sự cố hạ tầng sớm |
+| **Thông báo** | Telegram Bot Token, Chat ID, 30+ sự kiện bật/tắt | Nhận cảnh báo ngoài dashboard — máy offline, gian lận, đăng nhập thất bại… |
+| **API** | Xem/sao chép/làm mới khóa API, danh sách IP được phép | Tích hợp webhook/script nội bộ an toàn |
+| **Giới thiệu** | Phiên bản, stack, copyright, liên kết | Tra cứu version khi báo lỗi hỗ trợ |
+
+---
+
+### Thanh công cụ trái (Left Rail) — Luôn hiển thị
+
+| Mục | Route | Nhiệm vụ | Tác dụng |
+|---|---|---|---|
+| **Hỗ trợ Z-MON online** | `/ho-tro` | Chat realtime với **đội ngũ Z-MON** về gói dịch vụ, triển khai, thanh toán | Admin hỏi Z-MON trực tiếp — **khác** Yêu cầu hỗ trợ (ticket từ NV) |
+| **Giỏ hàng** | `/gio-hang` | Review đơn trước thanh toán gói/license | Kiểm tra số slot, thời hạn trước khi chuyển khoản |
+| **Thông báo hệ thống** | `/thong-bao-he-thong` | Broadcast từ **Z-MON platform**: bảo trì, cập nhật, khuyến mãi | Biết lịch maintenance — **khác** Thông báo sidebar (nội bộ công ty) |
+| **Chuyển ngôn ngữ** | — | Đổi giao diện VI ↔ EN | Đa quốc gia — không mất dữ liệu |
+| **Chính sách pháp lý** | `/dieu-khoan-su-dung`… | 17+ policy: Điều khoản, GDPR, CCPA, Luật ANM VN, Giám sát NV, DPA… | Tuân thủ pháp lý — đọc trong dashboard |
+| **Bản quyền tác giả** | `/ban-quyen-tac-gia` | Thông tin bản quyền Z-MON · QUANG IT | Credit & legal |
+
+---
+
+### Top Header — Công cụ điều hướng nhanh
+
+| Mục | Route | Nhiệm vụ | Tác dụng |
+|---|---|---|---|
+| **Ctrl+K / Cmd+K** | — | Tìm nhanh mọi trang sidebar + header + chính sách | Điều hướng 2 giây — Recent & Pinned pages |
+| **Gói của tôi** | Modal | Xem tên gói, hạn dùng, license đã dùng, link gia hạn | Biết còn bao nhiêu slot — cảnh báo trước khi hết hạn |
+| **Hướng dẫn sử dụng** | `/huong-dan-su-dung` | Tài liệu A→Z tích hợp trong dashboard | Onboarding admin mới — không cần PDF riêng |
+| **Ưu đãi** | `/uu-dai` | Chương trình khuyến mãi, ưu đãi gói | Tiết kiệm chi phí khi mua/nâng cấp |
+| **Mời doanh nghiệp** | `/moi-doanh-nghiep` | Chương trình giới thiệu affiliate | Mở rộng qua referral — copy link gửi đối tác |
+| **Hồ sơ** | `/ho-so` | Đổi mật khẩu, 2FA, avatar, thông tin cá nhân | Bảo mật tài khoản admin |
+| **Gia hạn** | `/gia-han` | Chọn gói, số license, thời hạn | Self-service renew trước khi hết hạn |
+| **Thanh toán** | `/thanh-toan` | VietQR, chuyển khoản, xác nhận đơn | Hoàn tất mua gói — slot cập nhật sau xác nhận |
+| **Đăng xuất** | — | Kết thúc phiên JWT, revoke session | Bảo mật máy dùng chung |
+
+---
+
+### Bảng tổng hợp — 35+ route Dashboard Admin
+
+| # | Menu | Route | Nhóm |
+|---|---|---|---|
+| 1 | Tổng quan | `/tong-quan` | Điều hành |
+| 2 | AI Trợ lý | `/ai-tro-ly` | AI |
+| 3 | Nhắn tin | `/nhan-tin` | Giao tiếp |
+| 4 | Tổng quan công việc | `/tong-quan-cong-viec` | Công việc |
+| 5 | Nhân viên | `/nhan-vien` | Công việc |
+| 6 | Danh sách công việc | `/danh-sach-cong-viec` | Công việc |
+| 7 | Dự án công việc | `/du-an-cong-viec` | Công việc |
+| 8 | AI Công việc | `/ai-cong-viec` | Công việc |
+| 9 | Tiến độ | `/tien-do` | Công việc |
+| 10 | Kết nối nền tảng | `/ket-noi-nen-tang` | Công việc |
+| 11 | Nhật ký công việc | `/nhat-ky-cong-viec` | Công việc |
+| 12 | Mẫu công việc | `/mau-cong-viec` | Công việc |
+| 13 | Sơ đồ Agent | `/so-do-agent` | Máy trạm |
+| 14 | Máy quản lý | `/may-quan-ly` | Máy trạm |
+| 15 | Hiệu suất tổng máy | `/hieu-suat-tong-may` | Máy trạm |
+| 16 | Nhật ký hoạt động | `/nhat-ky` | Audit |
+| 17 | Hiệu suất | `/hieu-suat` | Phân tích |
+| 18 | Phân tích thất thoát | `/phan-tich-that-thoat` | Phân tích |
+| 19 | Kiểm soát gian lận | `/kiem-soat-gian-lan` | Bảo mật |
+| 20 | Báo cáo | `/bao-cao` | Phân tích |
+| 21 | Cảnh báo | `/canh-bao` | Vận hành |
+| 22 | Thông báo | `/thong-bao` | Vận hành |
+| 23 | Yêu cầu hỗ trợ | `/yeu-cau-ho-tro` | Hỗ trợ |
+| 24 | Kiến thức cho nhân viên | `/kien-thuc-nhan-vien` | HR |
+| 25 | Lịch sử chấm công | `/lich-su-cham-cong` | HR |
+| 26 | Quản lý người điều hành | `/quan-ly-dh` | Quản trị |
+| 27 | Kích hoạt máy quản lý | `/kich-hoat` | Quản trị |
+| 28 | Cài đặt chung | `/cai-dat` | Quản trị |
+| 29 | Hướng dẫn sử dụng | `/huong-dan-su-dung` | Header |
+| 30 | Hồ sơ | `/ho-so` | Header |
+| 31 | Ưu đãi | `/uu-dai` | Header |
+| 32 | Mời doanh nghiệp | `/moi-doanh-nghiep` | Header |
+| 33 | Gia hạn | `/gia-han` | Billing |
+| 34 | Giỏ hàng | `/gio-hang` | Billing |
+| 35 | Thanh toán | `/thanh-toan` | Billing |
+| 36 | Hỗ trợ Z-MON online | `/ho-tro` | Left Rail |
+| 37 | Thông báo hệ thống | `/thong-bao-he-thong` | Left Rail |
+| 38 | Chính sách pháp lý (17+) | `/dieu-khoan-su-dung`… | Left Rail |
+
+---
+
 ## Trải nghiệm sản phẩm
 
 ### Dashboard Tổng quan — Trung tâm điều hành
@@ -63,7 +432,7 @@
 **Tác dụng:** Thay thế việc mở 6–8 module riêng lẻ; phát hiện bất thường qua KPI đỏ/vàng và deep link sang module chi tiết.
 
 <p align="center">
-  <img src="./tong-quan.png" alt="Dashboard Tổng quan Z-MON" width="92%" />
+  <img src="https://i.ibb.co/jv91LD0y/tong-quan.png" alt="Dashboard Tổng quan Z-MON" width="92%" />
 </p>
 
 | Thành phần | Nhiệm vụ | Tác dụng cụ thể |
@@ -84,7 +453,7 @@
 **Tác dụng:** Một module thay thế Trello + spreadsheet + email thread; kết nối "việc được giao" với "thời gian thực tế trên máy".
 
 <p align="center">
-  <img src="./tongquancongviec.png" alt="Tổng quan Công việc Z-MON" width="92%" />
+  <img src="https://i.ibb.co/TDZqTHch/tongquancongviec.png" alt="Tổng quan Công việc Z-MON" width="92%" />
 </p>
 
 | Tính năng | Nhiệm vụ | Tác dụng |
@@ -110,7 +479,7 @@
 **Tác dụng:** Không cần TeamViewer để biết NV đang làm gì; có bằng chứng cụ thể khi tranh chấp hiệu suất hoặc vi phạm chính sách.
 
 <p align="center">
-  <img src="./hieu-suat-tong-may.png" alt="Hiệu suất tổng máy Z-MON" width="92%" />
+  <img src="https://i.ibb.co/6RbQL1c2/hieu-suat-tong-may.png" alt="Hiệu suất tổng máy Z-MON" width="92%" />
 </p>
 
 #### Sơ đồ Agent
